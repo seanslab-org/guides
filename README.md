@@ -1,1 +1,1 @@
-Sean's engineering guide for coding agents
+Better practices for embedded vibe coding.
