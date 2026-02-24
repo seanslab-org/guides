@@ -3,7 +3,7 @@
 
   
 
-This document defines the required engineering workflow for all projects under the Bosco stack. The standard is “firmware bring-up discipline”: plan first, instrument the work, verify each stage, and only then declare completion.
+This document defines the required engineering workflow for all projects under the seanslab stack. The standard is “firmware bring-up discipline”: plan first, instrument the work, verify each stage, and only then declare completion.
 
 ---
 
