@@ -134,6 +134,7 @@ This document defines the required engineering workflow for all projects under t
 2. **Visible progress**
     
     - When starting any code agent, keep a terminal window open so progress and prompts are visible in real time.
+    - For big tasks, e.g. downloading big files, compile big source tree, etc, report at every 15% percent, keep user updated on the progress.
         
     
 3. **Proactive reporting**
