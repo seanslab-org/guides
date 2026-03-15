@@ -135,8 +135,9 @@ This document defines the required engineering workflow for all projects under t
     
     - When starting any code agent, keep a terminal window open so progress and prompts are visible in real time.
     - For big tasks, e.g. downloading big files, compile big source tree, etc, report at every 15% percent, keep user updated on the progress.
-        
-    
+    - When downloading big files to a target system, select the faster path — possibly download on the working machine (e.g. MacBook) first, then transfer to the target machine, rather than downloading directly on the target over a slow connection.
+
+
 3. **Proactive reporting**
     
     - Report progress periodically without waiting to be asked:
