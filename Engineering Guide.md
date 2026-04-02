@@ -199,7 +199,34 @@ This document defines the required engineering workflow for all projects under t
 
 ---
 
-## **7) Engineering Standards (Embedded Mindset)**
+## **7) Disk Hygiene (End-of-Day Cleanup)**
+
+1. **Check for temp file growth**
+
+    - At the end of each work session, audit all machines used for new temporary files, caches, build artifacts, and downloaded intermediates.
+
+    - Common culprits: `__pycache__/`, `.cache/`, `*.pyc`, `pip` download caches, HuggingFace cache (`~/.cache/huggingface/`), Docker dangling images, `tmp/` directories, log files, `.nohup.out`.
+
+
+2. **Delete aggressively, confirm if risky**
+
+    - Delete all clearly temporary files (build artifacts, pip caches, intermediate outputs) without asking.
+
+    - If a file or cache might be needed later (e.g., a large downloaded model, a dataset), confirm with the user before deleting.
+
+
+3. **Disk space must not grow from daily work**
+
+    - The goal is zero net disk growth from temporary/cache files across work sessions.
+
+    - After cleanup, report disk usage before vs after so the user can verify.
+
+    - On constrained devices (Jetson Orin, RK3588), this is critical — small root partitions fill up fast.
+
+
+---
+
+## **8) Engineering Standards (Embedded Mindset)**
 
 1. **Simplicity first**
     
@@ -247,3 +274,5 @@ This document defines the required engineering workflow for all projects under t
 - Lessons captured in tasks/lessons.md
     
 - Minimal-impact changes, root-cause fixes, staff-engineer quality bar
+
+- End-of-day disk cleanup: delete temp files/caches, confirm before removing anything risky
