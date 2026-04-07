@@ -64,7 +64,27 @@ This document defines the required engineering workflow for all projects under t
     - For complex problems, allocate more compute rather than polluting the main thread.
         
     
-2. **Autonomous problem solving**
+2. **Parallel execution after planning**
+    
+    - For complex tasks, once the plan is locked, scan it for steps that are independent and can run simultaneously instead of sequentially.
+        
+    - Run independent tool calls in a single batch (file reads, greps, builds, tests, network probes) — never serialize work that has no data dependency.
+        
+    - Hire subagents when a sub-task is large, context-heavy, or specialized (deep research, exploring an unfamiliar codebase, comparing tradeoffs across options). Each subagent gets one focused mission so its result is clean and reusable.
+        
+    - **Quality bar — parallelism must not degrade execution quality.** Before parallelizing, verify:
+        
+        - No write conflicts: parallel tasks must not touch the same files, branches, processes, or shared state.
+            
+        - No hidden order dependency: a step that depends on another step’s output must wait for it — never guess or use placeholders.
+            
+        - Each parallel branch is independently verifiable: results can be checked in isolation, and a failure in one does not silently corrupt the others.
+            
+        - If any of these constraints are unclear, run sequentially. Speed never beats correctness.
+            
+        
+    
+3. **Autonomous problem solving**
     
     - Solve issues independently whenever possible.
         
