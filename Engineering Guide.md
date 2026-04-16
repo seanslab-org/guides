@@ -72,6 +72,10 @@ This document defines the required engineering workflow for all projects under t
         
     - Hire subagents when a sub-task is large, context-heavy, or specialized (deep research, exploring an unfamiliar codebase, comparing tradeoffs across options). Each subagent gets one focused mission so its result is clean and reusable.
         
+    - Only hire subagents for sub-jobs that are clearly scoped, small enough to verify independently, and safe to run in parallel.
+        
+    - Every delegated sub-job must include its own success check, and the parent task is not done until that check was executed and reviewed.
+        
     - **Quality bar — parallelism must not degrade execution quality.** Before parallelizing, verify:
         
         - No write conflicts: parallel tasks must not touch the same files, branches, processes, or shared state.
@@ -100,9 +104,13 @@ This document defines the required engineering workflow for all projects under t
     
     - Write unit tests for each feature and run them.
         
+    - For engineering tasks, break the work into small, clear sub-jobs and define at least one concrete verification step for each sub-job before implementation.
+        
+    - Execute the test/check for each sub-job before marking it complete.
+        
     - If tests pass: proceed.
         
-    - If tests fail: fix and re-run until all tests pass.
+    - If tests fail: fix and re-run until all tests pass, or explicitly report the error, impact, and blocker if it cannot be resolved in the current task.
         
     
 2. **Never mark “done” without proof**
@@ -181,10 +189,16 @@ This document defines the required engineering workflow for all projects under t
     
     - Write the plan to tasks/todo.md with checkable items and acceptance criteria.
         
+    - Break engineering work down until each sub-job is small enough to execute, verify, and reason about independently.
+        
+    - Each sub-job must state its verification method up front (test, build, log check, repro, benchmark, or manual validation).
+        
     
 2. **Verify plan before implementation**
     
     - Quick sanity check: scope, risks, test strategy.
+        
+    - Mark which sub-jobs can run in parallel and which must remain sequential because of data, state, or file dependencies.
         
     
 3. **Track progress**
