@@ -295,6 +295,17 @@ This document defines the required engineering workflow for all projects under t
 
 ---
 
+## **9) Requirements Capture**
+
+1. **Log every user requirement in `Requirements.md`**
+
+    - When the user issues a requirement, briefly add it as its own entry in `Requirements.md`.
+    - Keep newest on top (prepend above the most recent ID).
+    - Put the agent's reply, in brief, into the same entry so the decision lives next to the requirement.
+
+
+---
+
 ## **Summary: Non-Negotiables**
 
 - Design + plan first (SDD + tasks/todo.md)
@@ -312,3 +323,5 @@ This document defines the required engineering workflow for all projects under t
 - Minimal-impact changes, root-cause fixes, staff-engineer quality bar
 
 - End-of-day disk cleanup: delete temp files/caches, confirm before removing anything risky
+
+- Every user requirement logged in `Requirements.md` (newest on top) with the agent's brief reply in the same entry
