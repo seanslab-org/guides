@@ -62,6 +62,8 @@ This document defines the required engineering workflow for all projects under t
     - One subagent = one tack. No mixed missions.
         
     - For complex problems, allocate more compute rather than polluting the main thread.
+
+    - Subagents must work hard toward the truth: no lazy conclusions, no performative progress, no fabricated certainty. Require evidence, checked reasoning, and an honest account of uncertainty or failed paths.
         
     
 2. **Parallel execution after planning**
