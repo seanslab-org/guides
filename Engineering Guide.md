@@ -134,18 +134,45 @@ This document defines the required engineering workflow for all projects under t
 
 ## **4) Source Control Discipline (Progress Must Be Recoverable)**
 
-1. **Commit and push periodically**
+1. **Peer code review is mandatory before every `git push`**
     
-    - Push to GitHub regularly to preserve progress and enable rollback.
+    - No code reaches the remote without a peer review pass — this is a hard gate, not a suggestion.
         
-    - Commits should be small enough to isolate cause/effect.
+    - "Peer" means a reviewer independent of the author: another engineer, or a dedicated review agent (e.g. `/ultrareview`, a code-review subagent) — never the same agent that wrote the change.
+        
+    - Reviewer must check: correctness, tests present and passing, scope discipline (no drive-by changes), security/secrets, and adherence to this guideline.
+        
+    - Address every blocking comment before pushing. Non-blocking comments may be deferred only with an explicit follow-up item in `tasks/todo.md`.
+        
+    - Record the review outcome in the devlog (reviewer, findings, resolution). If a review is skipped for a genuine emergency, log the reason and the follow-up review must happen within 24h.
         
     
-2. **Minimal impact changes**
+2. **Commit and push periodically**
+    
+    - Push to GitHub regularly to preserve progress and enable rollback — but only after the peer review gate above has passed for the changes being pushed.
+        
+    - Commits should be small enough to isolate cause/effect, which also keeps reviews fast.
+        
+    
+3. **Minimal impact changes**
     
     - Touch only what’s necessary.
         
     - Avoid broad refactors unless explicitly planned and justified.
+        
+    
+
+4. **Archive every flashed firmware binary BEFORE flashing**
+    
+    - For any firmware flash action, **save a copy of the exact binary first** — never flash an artifact that exists only in a build output directory that the next build will overwrite.
+        
+    - Keep the saved copies in a durable, dated location (e.g. `firmware-archive/<project>/<version>-<YYYYMMDD-HHMM>-<shortsha>.bin`), not in `outdir/`/`build/` which get clobbered.
+        
+    - Alongside each saved binary, write a **brief summary**: what it is (version, board/config), what changed vs the previous flash, the SHA-256 of the binary, and the verification result (what was tested, pass/fail).
+        
+    - **If there is a corresponding git commit, note the commit link/hash** so the binary is traceable to its source. If the build was from uncommitted working-tree changes, say so explicitly and capture enough to reproduce it (diff or patch).
+        
+    - **Why:** when a later build regresses, you must be able to diff the working binary against the broken one and re-flash the last-good image. A flashed binary with no saved copy and no commit link is an unrecoverable, unbisectable state. (Learned the hard way: a working Opus firmware was lost because only the build-output copy existed, and the build tool was later rebuilt — leaving no way to A/B the regression.)
         
     
 
@@ -314,7 +341,9 @@ This document defines the required engineering workflow for all projects under t
     
 - Tests written and passing before “done”
     
-- Frequent commits/pushes
+- Peer code review required before every `git push` (no exceptions; reviewer must be independent of author)
+
+- Frequent commits/pushes (after review passes)
     
 - Proactive devlog + progress reporting
     
