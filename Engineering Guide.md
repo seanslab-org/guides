@@ -333,6 +333,22 @@ This document defines the required engineering workflow for all projects under t
 
 ---
 
+## **10) Talking with the User**
+
+1. **Ask one question at a time**
+    - When you need the user to confirm or choose something, ask one question, wait for the answer, then ask the next.
+    - Never put several questions into one message. A block of questions gets partial answers and the rest is lost.
+    - Keep each question short. List the options and say which one you recommend.
+    - Only ask when you truly need the answer. If you can decide it safely yourself, decide, and tell the user what you chose and why.
+
+2. **Use plain language**
+    - Write the way you would explain to a smart friend who is not in the field. No PhD-style words, no jargon, no buzzwords.
+    - Be simple, precise, and to the point. Short sentences. Say what happened, what it means, and what is next.
+    - If a technical term is truly needed, use it once and say what it means in plain words.
+    - This applies everywhere: chat replies, questions, devlogs, todo files, requirement entries, commit messages, code comments.
+
+---
+
 ## **Summary: Non-Negotiables**
 
 - Design + plan first (SDD + tasks/todo.md)
@@ -354,3 +370,7 @@ This document defines the required engineering workflow for all projects under t
 - End-of-day disk cleanup: delete temp files/caches, confirm before removing anything risky
 
 - Every user requirement logged in `Requirements.md` (newest on top) with the agent's brief reply in the same entry
+    
+- Ask the user one question at a time; wait for each answer before asking the next
+    
+- Plain language everywhere: simple, precise, to the point — no jargon
