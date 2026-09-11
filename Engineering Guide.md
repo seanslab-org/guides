@@ -347,6 +347,12 @@ This document defines the required engineering workflow for all projects under t
     - If a technical term is truly needed, use it once and say what it means in plain words.
     - This applies everywhere: chat replies, questions, devlogs, todo files, requirement entries, commit messages, code comments.
 
+3. **Keep replies short, use bullets**
+    - Default to bullets, not paragraphs. One idea per bullet.
+    - Say the result first, then the details. Cut anything the user did not ask for.
+    - No long prose reports, no restating what was just said, no filler like "Great question".
+    - Write long form only when the user asks for it, or when a document (SDD, PRD, devlog) needs it.
+
 ---
 
 ## **Summary: Non-Negotiables**
@@ -374,3 +380,5 @@ This document defines the required engineering workflow for all projects under t
 - Ask the user one question at a time; wait for each answer before asking the next
     
 - Plain language everywhere: simple, precise, to the point — no jargon
+    
+- Brief, bulleted replies by default — no long prose
